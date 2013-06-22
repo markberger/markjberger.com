@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<link href="/static/css/flex-video.css" rel="stylesheet">
+
+<div class="container"> 
+     
+    <div class="hero-unit">
+        <h2>Projects</h2>
+        <br>
+        <h3>Stanford AISES</h3>
+        <div class="row-fluid">
+        	<div class="span6 text-center">
+        		<img class="img-rounded" src="static/img/stanford-aises.png">
+        	</div>
+        	<div class="span6">
+        		<p>I am the Webmaster for the AISES chapter at Stanford University. The website is
+        			built using Flask with Twitter Bootstrap and then deployed statically using
+        			Frozen-Flask and Fabric.
+        			<br>
+        			<br>
+        			<a href="http://aises.stanford.edu">Site</a>&nbsp&nbsp<a href="https://github.com/markberger/stanford-aises"> Source</a> 
+        		</p>
+        	</div>
+        </div>
+
+        <br>
+        <br>
+        <div class="row-fluid">
+        	<div class="span6 text-center">
+        		<img class="img-rounded" src="static/img/tahoe-logo.png">
+        	</div>
+        	<div class="span6">
+        		<p>I am currently a Google Summer of Code student working on Tahoe-LAFS for the Python Software Foundation. My project is to implement a new upload algorithm which will optimize the distribution of erasure encoded files.
+        			<br>
+        			<br>
+        			<a href="https://tahoe-lafs.org/trac/tahoe-lafs">Site</a>&nbsp&nbsp<a href="https://github.com/markberger/tahoe-lafs"> Source</a> 
+        		</p>
+        	</div>
+        </div>
+
+        <p>To view more of my projects look at my <a href="http://github.com/markberger">Github page</a>.
+    </div>      
+</div> 
+
+{% endblock %}
