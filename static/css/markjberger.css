@@ -1,0 +1,56 @@
+body {
+	padding-top: 60px;
+	background-color: #ff9366;
+	background-image: url('/static/img/noise.png');
+}
+
+.hero-unit {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.well {
+	border: 0px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left: -20px;
+	margin-right: -10px;
+	margin-bottom: 20px;
+
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+}
+.content {
+	width: inherit;
+}
+.nav-tabs > li > a {
+	background-color: white;
+}
+
+.nav-tabs > li > a:hover {
+	background-color: #f7f7f7;
+}
+
+.brand {
+	color: inherit;
+}
+
+.brand:hover {
+	text-decoration: none;
+}
+
+#me {
+	margin-left: -20px;
+	margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+	.content {
+		padding-top: 170px;
+	}
+
+	body {
+		padding-top: 0px;
+	}
+}
