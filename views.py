@@ -68,7 +68,7 @@ def is_valid(data, recv_hash):
 	gen_hash = hmac.new(environ['BLOG_KEY'], data, hashlib.sha256).hexdigest()
 	data = json.loads(data)
 	time_diff = time.mktime(time.gmtime()) - data['time']
-	if time_diff < 0 or time_diff > 120:
+	if time_diff < -18200 or time_diff > -17700:
 		print 'Request failed because time diff is:', time_diff
 		return False
 	elif recv_hash != gen_hash:
