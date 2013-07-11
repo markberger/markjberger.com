@@ -46,6 +46,10 @@ def blog_post(title):
 	else:
 		return render_template('post.html', post=post)
 
+@app.errorhandler(500)
+def internal_error(exception):
+	print exception
+
 #-----------------------------
 # Blog API
 #-----------------------------
@@ -65,8 +69,10 @@ def is_valid(data, recv_hash):
 	data = json.loads(data)
 	time_diff = time.mktime(time.gmtime()) - data['time']
 	if time_diff < 0 or time_diff > 120:
+		print 'Request failed because time diff is:', time_diff
 		return False
 	elif recv_hash != gen_hash:
+		print 'Request failed because the hashes do not match'
 		return False
 	else:
 		return True
