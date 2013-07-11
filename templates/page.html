@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for post in posts %}
+  <div class="hero-unit">
+  	<a class='brand' href={{ url_for('blog_post', title=post.url) }}><h2>{{ post.title }}</h2></a>
+  	<h3>{{ post.date_str }}</h3>
+  	<hr>
+  	{{ post.body|truncate(500)|markdown|safe }}
+  </div>
+ {% endfor %}
+
+
+{% if next_page or prev_page %}
+
+	<div class='row-fluid'>
+		<div class="btn-group pull-right">
+			{% if prev_page %}
+				<a href={{ url_for('blog_page', page=prev_page) }} class="btn">Previous</a>
+			{% endif %}
+			{% if next_page %}
+				<a href={{ url_for('blog_page', page=next_page) }} class="btn">Next</a>
+			{% endif %}
+		</div>
+
+		<br>
+		<br>
+{% endif %}
+		<br>
+	</div>
+
+{% endblock %}
