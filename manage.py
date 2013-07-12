@@ -19,9 +19,10 @@ def prep_request(data):
 def get_posts(page=1):
 	req = urllib2.Request(BLOG_URL+'api/get_posts?page=%d' % int(page))
 	response = json.load(urllib2.urlopen(req))
-	print response
+	for post in response['posts']:
+		print "\t" + post['title'] + ' (%s)' % post['date_str']
 
-def delete(post_path):
+def remove(post_path):
 	post_path = 'posts/' + post_path
 	if os.path.isfile(post_path):
 		data = {}
@@ -33,7 +34,7 @@ def delete(post_path):
 		response = json.load(urllib2.urlopen(req))
 
 		if response['request'] == 'success':
-			print 'Successfully deleted:', data['url']
+			print 'Successfully removed:', data['url']
 		else:
 			print 'Encountered error:', response['error']
 	else:
@@ -58,7 +59,20 @@ def upload(post_path):
 		print 'Could not find:', post_path
 
 
+def new(name='new_post'):
+	path = 'posts/'+name+'.yaml'
+	if os.path.isfile(path):
+		print '\'%s\' already exists. Please choose a different name.' % path
+	else:
+		f = open('posts/'+name+'.yaml', 'w+')
+		f.write("title:\n")
+		f.write("date: %s\n" % date.today())
+		f.write("date_str:\n")
+		f.write("body: |\n    \n")
+		f.write("tags:\n    -")
+		f.close()
+
 if __name__ == '__main__':
 	parser = argh.ArghParser()
-	parser.add_commands([upload, delete, get_posts])
+	parser.add_commands([upload, remove, get_posts, new])
 	parser.dispatch()
