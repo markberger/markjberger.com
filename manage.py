@@ -10,7 +10,7 @@ import yaml
 from settings import API_KEY, BLOG_URL
 
 def prep_request(data):
-	data['time'] = time.mktime(time.gmtime())
+	data['time'] = time.time()
 	request_data = json.dumps(data)
 	h = hmac.new(API_KEY, request_data, hashlib.sha256)
 	to_send = 'hash=' + h.hexdigest() + '&json=' + request_data
