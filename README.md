@@ -6,8 +6,5 @@ is limited using hash-based message authentication (HMAC). A time stamp is added
 prevent replay attacks.
 
 #To Do:
-- Make time_diff change according to whether site is running in development or production
-- manage.py: get_posts should download and store posts in yaml files
-- manage.py: Write a function that will create a new yaml file with all of the required fields
 - Add tags to the blog
 - Add an atom/rss feed
