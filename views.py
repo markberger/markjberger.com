@@ -6,14 +6,15 @@ from flask import Flask, render_template, abort, request
 import time
 from pymongo import MongoClient
 from bson import json_util
+from settings import *
 
 POSTS_PER_PAGE = 4
 
 app = Flask(__name__)
 
 try:
-	client = MongoClient(environ['MONGOHQ_URL'])
-	db = client[environ['DB_NAME']]
+	client = MongoClient(MONGOHQ_URL)
+	db = client[DB_NAME]
 
 except:
 	print 'Error: Unable to connect to MongoHQ'
@@ -65,7 +66,7 @@ def api_success():
 def is_valid(data, recv_hash):
 	if 'time' not in data:
 		return False
-	gen_hash = hmac.new(environ['BLOG_KEY'], data, hashlib.sha256).hexdigest()
+	gen_hash = hmac.new(BLOG_KEY, data, hashlib.sha256).hexdigest()
 	data = json.loads(data)
 	time_diff = time.time() - data['time']
 	if time_diff < -30 or time_diff > 60:

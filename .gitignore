@@ -1,3 +1,5 @@
+env/
+settings.py
 *.py[cod]
 *.py~
 *.ini
